@@ -83,8 +83,8 @@ $yamada->attend('PHP');
 // Q5 定義済みクラス
 //問題1
 
-$Time = new DateTime();
-echo $Time->format('Y-m-d');
+$time = new DateTime();
+echo $time->format('Y-m-d');
 
 //問題2
 
@@ -93,5 +93,3 @@ $time = new DateTime('1992-4-25');
 
 $diff = $today->diff($time);
 echo 'あの日から' . $diff->days . '日経過しました。';
-
-?>
