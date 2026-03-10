@@ -91,5 +91,5 @@ echo $time->format('Y-m-d');
 $today = new DateTime();
 $time = new DateTime('1992-4-25');
 
-$diff = $today->diff($time);
-echo 'あの日から' . $diff->days . '日経過しました。';
+$diffDay = $today->diff($time);
+echo 'あの日から' . $diffDay->days . '日経過しました。';
