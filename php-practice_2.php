@@ -1,44 +1,34 @@
 <?php
 // Q1 tic-tac問題
-for($i = 1;$i <= 100; $i++){
-    switch($i){
-        case $i % 4 === 0:
-        if($i % 5 === 0){
-            echo 'tic-tac\n';
-        }
-            else{
-                echo 'tic\n';
-            }
-        break;
-        
-        case $i % 5 === 0:
-            echo 'tac\n';
-        break;
-        
-        default:
-            echo $i.'\n';
-        break;
+for ($i = 1; $i <= 100; $i++) {
+    if ($i % 5 === 0 && $i % 4 === 0) {
+        echo "tic-tac\n";
+    } elseif ($i % 4 === 0) {
+        echo "tic\n";
+    } elseif ($i % 5 === 0) {
+        echo "tac\n";
+    } else {
+        echo $i . "\n";
     }
 }
 
 // Q2 多次元連想配列
 //問題1
-echo 'Bさんの電話番号'.$personalInfos[1]['tel'].'はです。';
+echo 'Bさんの電話番号' . $personalInfos[1]['tel'] . 'はです。';
 
 //問題2
-$i = 1;
-foreach ($personalInfos as $index=> $information) {
-    echo $i.'番目の'.$information['name'].'のメールアドレスは'.$information['mail'].'で、電話番号は'.$information['tel'].'です。\n';
-    $i++;
+
+foreach ($personalInfos as $index => $information) {
+    echo ($index + 1) . '番目の' . $information['name'] . 'のメールアドレスは' . $information['mail'] . 'で、電話番号は' . $information['tel'] . "です。\n";
 }
 
 //問題3
 $ageList = [25, 30, 18];
 $count = 0;
 
-foreach ($ageList as $age){
-    $personalInfos[$count]['age'] = $age; 
-    $i++;
+foreach ($ageList as $age) {
+    $personalInfos[$count]['age'] = $age;
+    $count++;
 }
 
 var_dump($personalInfos);
@@ -58,17 +48,12 @@ class Student
 
     public function attend()
     {
-        if($this->studentId >0)
-        {
-        
-        echo '学籍番号'.$this->studentId.'番の生徒は'.$this->studentName.'です。';
-        }
+        echo '授業に出席しました。';
     }
 }
 
-$gakusei = new Student(120,'山田');
-
-$gakusei -> attend();
+$gakusei = new Student(120, '山田');
+echo '学籍番号' . $gakusei->studentId . '番の生徒は' . $gakusei->studentName . 'です。';
 
 // Q4 オブジェクト-2
 
@@ -85,10 +70,9 @@ class Student
 
     public function attend($language)
     {
-        if($this->studentId > 0)
-        {
-        
-        echo $this->studentName.'は'.$language.'の授業に参加しました。学籍番号：'.$this->studentId;    
+        if ($this->studentId > 0) {
+
+            echo $this->studentName . 'は' . $language . 'の授業に参加しました。学籍番号：' . $this->studentId;
         }
     }
 }
@@ -100,14 +84,14 @@ $yamada->attend('PHP');
 //問題1
 
 $Time = new DateTime();
-echo $Time -> format('Y-m-d');
+echo $Time->format('Y-m-d');
 
 //問題2
 
 $today = new DateTime();
 $time = new DateTime('1992-4-25');
 
-$diff = $today -> diff($time);
-echo 'あの日から'.$diff ->days.'日経過しました。';
+$diff = $today->diff($time);
+echo 'あの日から' . $diff->days . '日経過しました。';
 
 ?>

@@ -17,16 +17,14 @@ echo '現在時刻は、'.date('Y年m月d日H時i分s秒').'です';
 
 $device = 'windows';
 
-if($device === 'windows'){
-  echo '使用OSは、windowsです。';
-}
-
-if($device === 'mac'){
-    echo'使用OSは、macです。';
-}
-
-if($device != 'windows' && $device != 'mac'){
-    echo'どちらでもありません。';
+if ($device === 'windows') {
+    echo '使用OSは、windowsです。';
+} else {
+    if ($device === 'mac') {
+        echo '使用OSは、macです。';
+    } else {
+        echo 'どちらでもありません。';
+    }
 }
   
 // Q5 条件分岐-2 三項演算子
@@ -50,30 +48,34 @@ echo $Value.'\n';
 $Kantou = ['東京都'=>'新宿区','神奈川県'=>'横浜市','千葉県'=>'千葉市','埼玉県'=>'さいたま市','栃木県'=>'宇都宮市','群馬県'=>'前橋市','茨城県'=>'水戸市'];
 
 foreach($Kantou as $pref=>$Value){
-    if($pref === '埼玉県' && $Value === 'さいたま市'){
+    if($pref === '埼玉県' && $Value === 'さいたま市') {
         echo $pref.'の県庁所在地は、'.$Value.'です。';
     }
 }
 
 // Q9 連想配列-3
-$Kantou = ['東京都'=>'新宿区','神奈川県'=>'横浜市','千葉県'=>'千葉市','埼玉県'=>'さいたま市','栃木県'=>'宇都宮市','群馬県'=>'前橋市','茨城県'=>'水戸市','愛知県'=>'','大阪府'=>''];
+$Kantou = ['東京都'=>'新宿区','神奈川県'=>'横浜市','千葉県'=>'千葉市','埼玉県'=>'さいたま市','栃木県'=>'宇都宮市','群馬県'=>'前橋市','茨城県'=>'水戸市'];
+
+$Kantou['愛知県'] ='';
+$Kantou['大阪府'] ='';
 
 foreach($Kantou as $pref=>$Value){
-    if($pref != '愛知県' && $pref != '大阪府'){
-         echo $pref.'の県庁所在地は、'.$Value.'です。\n';
+    if($pref === '愛知県' || $pref === '大阪府') {
+    echo $pref."は関東地方ではありません。\n";
     }
-    if($pref === '愛知県' || $pref === '大阪府'){
-        echo $pref.'は関東地方ではありません。\n';
+
+    else {
+         echo $pref.'の県庁所在地は、'.$Value."です。\n";
     }
 }
 
 // Q10 関数-1
-function hello($name1,$name2){
-    echo $name1.'さん、こんにちは。\n';
-    echo $name2.'さん、こんにちは。';
+function hello($name){
+    return $name.'さん、こんにちは。';
 }
 
-hello('金谷','安藤');
+echo hello('金谷')."\n";
+echo hello('安藤');
 
 // Q11 関数-2
 function calcTaxInPrice($price){
@@ -97,7 +99,7 @@ distinguishNum(6);
 
 // Q13 関数とswitch文
 function evaluateGrade($judgement){
-    switch($judgement){
+    switch($judgement) {
         case'A':
         case'B';
             echo'合格です';
